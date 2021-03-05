@@ -219,18 +219,20 @@
     <article>
       <h2>Start your new project</h2>
       <script type="text/html" data-lang="makefile">
-➜ stack new my-project
+➜ stack new hello
 
-➜ cd my-project
+➜ cd hello
 
 ➜ stack setup
 
 ➜ stack build
 
-➜ stack exec my-project-exe
+➜ stack run
+# or
+➜ stack exec hello-exe
 
 # outputs:
-# >> Hello, World!
+# >> someFunc
       </script>
     </article>
 
@@ -239,19 +241,17 @@
       <script type="text/html" data-lang="log">
 ├── app
 │   └── Main.hs
-├── ChangeLog.md
-├── LICENSE
-├── my-project.cabal
-├── package.yaml
-├── README.md
-├── Setup.hs
 ├── src
 │   └── Lib.hs
-├── stack.yaml
-└── test
-    └── Spec.hs
-
-    3 directories, 10 files
+├── test
+│   └── Spec.hs
+├── hello.cabal
+├── .gitignore
+├── Setup.hs
+├── ChangeLog.md
+├── README.md
+├── LICENSE
+└── stack.yaml.lock
       </script>
     </article>
 
@@ -263,7 +263,7 @@ module Main where
 import Lib
 
 main :: IO ()
-main = hello
+main = someFunc
       </script>
     </article>
 
@@ -271,13 +271,12 @@ main = hello
     <article>
       <h2>Lib.hs</h2>
       <script type="text/html" data-lang="haskell">
-
 module Lib
-    ( hello
+    ( someFunc
     ) where
 
-hello :: IO ()
-hello = putStrLn "Hello, World!"
+someFunc :: IO ()
+someFunc = putStrLn "someFunc"
       </script>
     </article>
   </section>
