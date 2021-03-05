@@ -201,12 +201,16 @@
         <li class="footnote">There are many ways to install</li>
         <li class="footnote">Stack - The Haskell Tool Stack</li>
       </ul>
-     <script type="text/html" data-lang="log">
-Linux/MacOS:
+     <script type="text/html" data-lang="makefile">
+# MacOS:
+
+➜ brew install haskell-stack
+
+# Linux/MacOS:
 
 ➜ curl -sSL https://get.haskellstack.org/ | sh
 
-Windows:
+# Windows:
 
 ➜ https://get.haskellstack.org/stable/windows-x86_64-installer.exe
       </script>
@@ -214,7 +218,7 @@ Windows:
 
     <article>
       <h2>Start your new project</h2>
-      <script type="text/html" data-lang="log">
+      <script type="text/html" data-lang="makefile">
 ➜ stack new my-project
 
 ➜ cd my-project
@@ -225,8 +229,8 @@ Windows:
 
 ➜ stack exec my-project-exe
 
-(output)
-➜ someFunc
+# outputs:
+# >> Hello, World!
       </script>
     </article>
 
@@ -259,7 +263,7 @@ module Main where
 import Lib
 
 main :: IO ()
-main = someFunc
+main = hello
       </script>
     </article>
 
@@ -269,11 +273,11 @@ main = someFunc
       <script type="text/html" data-lang="haskell">
 
 module Lib
-    ( someFunc
+    ( hello
     ) where
 
-someFunc :: IO ()
-someFunc = putStrLn "someFunc"
+hello :: IO ()
+hello = putStrLn "Hello, World!"
       </script>
     </article>
   </section>
