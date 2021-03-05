@@ -281,6 +281,28 @@ someFunc = putStrLn "someFunc"
     </article>
   </section>
 
+  <section id="haskell-λ">
+    <article>
+      <h2>Lambdas in Haskell</h2>
+      <script type="text/html" data-lang="makefile">
+➜ stack repl
+
+Prelude> (\x -> x) 1
+1
+
+Prelude> (\x -> x) "blah"
+"blah"
+
+Prelude> (\x y -> x + y) 1 2
+3
+
+Prelude> (\x -> \y -> x + y) 1 2
+3
+      </script>
+    </article>
+  </section>
+
+
   <section id="thanks">
     <article>
       <h1>Thank you</h1>
