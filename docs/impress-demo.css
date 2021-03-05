@@ -457,6 +457,17 @@ a:focus {
   font-size: 0.6em;
 }
 
+/* Specify in CSS */
+code {
+  font-family: "Fira Code", Consolas, "Liberation Mono", Courier, monospace;
+}
+
+@supports (font-variation-settings: normal) {
+  code {
+    font-family: "Fira Code VF", Consolas, "Liberation Mono", Courier, monospace;
+  }
+}
+
 .impress-enabled pre code {
   font-family: Consolas, "Liberation Mono", Courier, monospace;
   font-size: 0.8em;

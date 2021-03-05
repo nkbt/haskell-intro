@@ -10,8 +10,12 @@
   <meta name="description" content="Haskel Introduction workshop." />
   <meta name="author" content="Nikita Butenko, Robert Chang" />
 
-  <link href="http://fonts.googleapis.com/css?family=Open+Sans:regular,semibold,italic,italicsemibold|PT+Sans:400,700,400italic,700italic|PT+Serif:400,700,400italic,700italic" rel="stylesheet" />
-
+  <link
+    href="http://fonts.googleapis.com/css?family=Open+Sans:regular,semibold,italic,italicsemibold|PT+Sans:400,700,400italic,700italic|PT+Serif:400,700,400italic,700italic"
+    rel="stylesheet" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Fira%20Code:wght@300..700&display=swap"
+    rel="stylesheet" />
   <link href="impress-demo.css" rel="stylesheet" />
 
   <link rel="shortcut icon" href="favicon.png" />
@@ -87,12 +91,98 @@
     </article>
   </section>
 
-  <section id="lambda">
+  <section id="functions">
     <article>
       <h2>Pure functions</h2>
       <ul>
-        <li>...</li>
+        <li>referential transparency</li>
+        <li>same input --> same output</li>
+        <li>like in math</li>
       </ul>
+    </article>
+
+    <article>
+      <h2>Valid function</h2>
+      <ul>
+        <li>𝑓(10) = 𝐴</li>
+        <li>𝑓(200) = B</li>
+        <li>𝑓(9000) = C</li>
+      </ul>
+    </article>
+
+    <article>
+      <h2>NOT a valid function</h2>
+      <ul>
+        <li>𝑓(123) = X</li>
+        <li>𝑓(123) = Y</li>
+        <li>𝑓(1000) = Z</li>
+      </ul>
+    </article>
+
+    <article>
+      <h2>Still a very valid function</h2>
+      <ul>
+        <li>𝑓(1) = A</li>
+        <li>𝑓(2) = A</li>
+        <li>𝑓(3) = A</li>
+      </ul>
+    </article>
+  </section>
+
+  <section id="lambda">
+    <article>
+      <h2>Lambdas</h2>
+      <ul>
+        <li><b>λx.x + 1</b></li>
+        <li>head</li>
+        <li>body</li>
+      </ul>
+    </article>
+
+    <article>
+      <h2>Beta reduction</h2>
+      <pre><code class="hljs ruby">
+                ( λx.x + 1 ) 2
+                    [ x := 2 ] # applying 2
+         ( λ[ x := 2 ].x + 1 )
+                     ( 2 + 1 )
+                             3 # reduced to identity function
+      </code></pre>
+    </article>
+
+    <article>
+      <h2>Now with functions!</h2>
+      <pre><code class="hljs ruby">
+        # Applications are left associative
+       '1'      ( λx.x )( λy.y ) z
+       '2'  ( ( λx.x )( λy.y ) ) z # rewrite as
+       '3'       [ x := ( λy.y ) ] # apply from left to right
+       '4'              ( λy.y ) z
+       '5'              [ y := z ]
+       '6'                       z # reduced to identity
+       '7'                         # "z" is a free variable
+      </code></pre>
+    </article>
+
+    <article>
+      <h2>Multiple arguments</h2>
+      <pre><code class="hljs ruby">
+         # It is just a shorthand for nested Lambda
+         '1'          λxy.x + y
+         '2'        λx.λy.x + y
+         '3'    λx.( λy.x + y )
+
+         # apply with x = 1 and y = 2
+         '1'           ( λxy.x + y ) 1 2
+         '2'         λx.( λy.x + y ) 1 2
+         '3'  λ[ x := 1 ].( λy.x + y ) 2 # apply x = 1
+         '4'              ( λy.1 + y ) 2
+         '5'       ( λ[ y := 2 ].1 + y ) # apply y = 2
+         '6'                       1 + 2
+         '7'                           3
+
+         # Reached beta normal form (cannot reduce further)
+      </code></pre>
     </article>
   </section>
 
