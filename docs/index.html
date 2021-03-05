@@ -189,18 +189,18 @@
   <section id="setup-env">
     <article>
       <h2>GHC</h2>
-			<ul>
-				<li>GHC: Glasgow Haskell Compiler</li>
-				<li>GHCi: (i)nterative intepreter and debugger</li>
-			</ul>
+      <ul>
+        <li>GHC: Glasgow Haskell Compiler</li>
+        <li>GHCi: (i)nterative intepreter and debugger</li>
+      </ul>
     </article>
 
     <article>
       <h2>Install</h2>
-			<ul>
-				<li class="footnote">There are many ways to install</li>
-				<li class="footnote">Stack - The Haskell Tool Stack</li>
-			</ul>
+      <ul>
+        <li class="footnote">There are many ways to install</li>
+        <li class="footnote">Stack - The Haskell Tool Stack</li>
+      </ul>
      <script type="text/html" data-lang="log">
 Linux/MacOS:
 
@@ -212,11 +212,9 @@ Windows:
       </script>
     </article>
 
-   <article>
+    <article>
       <h2>Start your new project</h2>
-     <script type="text/html" data-lang="log">
-
-
+      <script type="text/html" data-lang="log">
 ➜ stack new my-project
 
 ➜ cd my-project
@@ -229,13 +227,12 @@ Windows:
 
 (output)
 ➜ someFunc
-
       </script>
     </article>
 
-  <article>
+    <article>
       <h2>Project structure</h2>
-     <script type="text/html" data-lang="log">
+      <script type="text/html" data-lang="log">
 ├── app
 │   └── Main.hs
 ├── ChangeLog.md
@@ -256,7 +253,7 @@ Windows:
 
     <article>
       <h2>Main.hs</h2>
-     <script type="text/html" data-lang="haskell">
+      <script type="text/html" data-lang="haskell">
 module Main where
 
 import Lib
@@ -269,7 +266,7 @@ main = someFunc
 
     <article>
       <h2>Lib.hs</h2>
-     <script type="text/html" data-lang="haskell">
+      <script type="text/html" data-lang="haskell">
 
 module Lib
     ( someFunc
@@ -279,8 +276,8 @@ someFunc :: IO ()
 someFunc = putStrLn "someFunc"
       </script>
     </article>
-
   </section>
+
   <section id="thanks">
     <article>
       <h1>Thank you</h1>
