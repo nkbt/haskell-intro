@@ -302,6 +302,77 @@ Prelude> (\x -> \y -> x + y) 1 2
     </article>
   </section>
 
+  <section id="types">
+    <article>
+      <h2>Basic Datatypes</h2>
+      <ul>
+        <li>Structure</li>
+      </ul>
+    </article>
+
+    <article>
+      <h2>Data declaration</h2>
+      <script type="text/html" data-lang="haskell">
+-- the definition of Bool
+data Bool = False | True
+--      1       2 3    4
+
+-- 1: Type constructor for datatype Bool
+-- 2: Data constructor for the value False
+-- 3: logical disjunction, "or"
+-- 4: Data constructor for the value True
+      </script>
+    </article>
+
+
+    <article>
+      <h2>Inspect types - :type</h2>
+      <script type="text/html" data-lang="haskell">
+Prelude> :type 't'
+'t' :: Char           -- 't' has the type Char
+
+Prelude> :type "julie"
+"julie" :: [Char]     -- "julie" has the type String
+
+Prelude> :type True
+True :: Bool          -- True has the type Bool
+      </script>
+    </article>
+
+    <article>
+      <h2>Inspect anything!</h2>
+      <script type="text/html" data-lang="haskell">
+:t is a shortcut for :type
+
+Prelude> 1 / 2
+0.5
+
+Prelude> :type (/)
+(/) :: Fractional a => a -> a -> a
+
+Prelude> :type 1 / 2
+1 / 2 :: Fractional a => a
+
+Prelude> :t 0.5
+0.5 :: Fractional p => p
+
+Prelude> :t (==)
+(==) :: Eq a => a -> a -> Bool
+      </script>
+    </article>
+
+    <article>
+      <h2>Types</h2>
+      <ul>
+        <li>Numbers (Int, Integer, Float, Double, Rational, Scientific)</li>
+        <li>Strings</li>
+        <li>Bool</li>
+        <li>tuples `let tup = (1, 2)`</li>
+        <li>lists `let list = [1, 2, 3, 4]`</li>
+      </ul>
+    </article>
+  </section>
+
 
   <section id="thanks">
     <article>
