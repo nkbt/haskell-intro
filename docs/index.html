@@ -281,6 +281,28 @@ someFunc = putStrLn "someFunc"
     </article>
   </section>
 
+
+  <section id="vscode">
+    <article>
+      <h1>VSCode</h1>
+      <p>
+        <a href="https://code.visualstudio.com">https://code.visualstudio.com</a>
+      </p>
+      <img src="./vscode-download.png" alt="" />
+    </article>
+
+    <article>
+      <h2>Haskell Extension</h2>
+      <img src="./vscode-haskell.png" alt="" />
+    </article>
+
+    <article>
+      <h2>VSCode Syntax/type support</h2>
+      <img src="./vscode-syntax.png" alt="" />
+    </article>
+  </section>
+
+
   <section id="haskell-λ">
     <article>
       <h2>Lambdas in Haskell</h2>
@@ -304,10 +326,7 @@ Prelude> (\x -> \y -> x + y) 1 2
 
   <section id="types">
     <article>
-      <h2>Basic Datatypes</h2>
-      <ul>
-        <li>Structure</li>
-      </ul>
+      <h2>Basic Datatypes Structure</h2>
     </article>
 
     <article>
@@ -324,6 +343,16 @@ data Bool = False | True
       </script>
     </article>
 
+    <article>
+      <h2>Types</h2>
+      <ul>
+        <li>Numbers (Int, Integer, Float, Double, Rational, Scientific)</li>
+        <li>Strings</li>
+        <li>Bool</li>
+        <li>tuples `let tup = (1, 2)`</li>
+        <li>lists `let list = [1, 2, 3, 4]`</li>
+      </ul>
+    </article>
 
     <article>
       <h2>Inspect types - :type</h2>
@@ -362,14 +391,76 @@ Prelude> :t (==)
     </article>
 
     <article>
-      <h2>Types</h2>
+      <h2>Inspect with :info</h2>
+      <script type="text/html" data-lang="haskell">
+Prelude> :info Bool
+
+type Bool :: *
+data Bool = False | True
+    -- Defined in ‘GHC.Types’
+instance Eq Bool              -- Defined in ‘GHC.Classes’
+instance Ord Bool             -- Defined in ‘GHC.Classes’
+instance Enum Bool            -- Defined in ‘GHC.Enum’
+instance Show Bool            -- Defined in ‘GHC.Show’
+instance Read Bool            -- Defined in ‘GHC.Read’
+instance Bounded Bool         -- Defined in ‘GHC.Enum’
+      </script>
+    </article>
+
+    <article>
+      <h2>Typeclasses</h2>
       <ul>
-        <li>Numbers (Int, Integer, Float, Double, Rational, Scientific)</li>
-        <li>Strings</li>
-        <li>Bool</li>
-        <li>tuples `let tup = (1, 2)`</li>
-        <li>lists `let list = [1, 2, 3, 4]`</li>
+        <li><b>type</b> defines how that type in particular is created</li>
+        <li><b>typeclass</b> defines how a set of types are <i>consumed</i> or used in computations</li>
+        <li>typeclass is somewhat like an <i>interface</i></li>
       </ul>
+    </article>
+
+    <article>
+      <h2>Typeclass example</h2>
+      <script type="text/html" data-lang="haskell">
+class Eq a where          -- Declare the typeclass
+  (==) :: a -> a -> Bool  -- Declare a method of the typeclass
+
+-- `a` - type variable
+
+-- to create an instance of Eq for Int,
+-- we would have to write a function
+-- with type signature `Int -> Int -> Bool`
+-- which tests two integers for equality
+      </script>
+    </article>
+
+    <article>
+      <h2>Eq instance</h2>
+      <script type="text/html" data-lang="haskell">
+type Name = String
+data Status = Available | ClosingSoon | Closed | Exhausted
+data DeliveryWindow = DeliveryWindow {
+  name :: Name,
+  status :: Status
+} deriving (Eq, Show)
+
+instance Eq Status where
+   Available == Available       = True
+   ClosingSoon == ClosingSoon   = True
+   Closed == Closed             = True
+   Exhausted == Exhausted       = True
+   _ == _                       = False
+      </script>
+    </article>
+
+    <article>
+      <h2>Show instance (exercise)</h2>
+      <script type="text/html" data-lang="haskell">
+instance Show DeliveryWindow where show a = "DeliveryWindow (" ++ ")"
+
+instance Show Status where
+   Available = "Available"
+   ClosingSoon = "ClosingSoon"
+   Closed = "Closed"
+   Exhausted = "Exhausted"
+      </script>
     </article>
   </section>
 
