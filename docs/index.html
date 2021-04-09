@@ -281,6 +281,28 @@ someFunc = putStrLn "someFunc"
     </article>
   </section>
 
+
+  <section id="vscode">
+    <article>
+      <h1>VSCode</h1>
+      <p>
+        <a href="https://code.visualstudio.com">https://code.visualstudio.com</a>
+      </p>
+      <img src="./vscode-download.png" alt="" />
+    </article>
+
+    <article>
+      <h2>Haskell Extension</h2>
+      <img src="./vscode-haskell.png" alt="" />
+    </article>
+
+    <article>
+      <h2>VSCode Syntax/type support</h2>
+      <img src="./vscode-syntax.png" alt="" />
+    </article>
+  </section>
+
+
   <section id="haskell-λ">
     <article>
       <h2>Lambdas in Haskell</h2>
@@ -409,6 +431,37 @@ class Eq a where          -- Declare the typeclass
       </script>
     </article>
 
+    <article>
+      <h2>Eq instance</h2>
+      <script type="text/html" data-lang="haskell">
+type Name = String
+data Status = Available | ClosingSoon | Closed | Exhausted
+data DeliveryWindow = DeliveryWindow {
+  name :: Name,
+  status :: Status
+} deriving (Eq, Show)
+
+instance Eq Status where
+   Available == Available       = True
+   ClosingSoon == ClosingSoon   = True
+   Closed == Closed             = True
+   Exhausted == Exhausted       = True
+   _ == _                       = False
+      </script>
+    </article>
+
+    <article>
+      <h2>Show instance (exercise)</h2>
+      <script type="text/html" data-lang="haskell">
+instance Show DeliveryWindow where show a = "DeliveryWindow (" ++ ")"
+
+instance Show Status where
+   Available = "Available"
+   ClosingSoon = "ClosingSoon"
+   Closed = "Closed"
+   Exhausted = "Exhausted"
+      </script>
+    </article>
   </section>
 
 
